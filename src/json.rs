@@ -43,6 +43,14 @@ fn value_to_json(val: &Value) -> String {
         }
         Value::Function { name, .. } => format!("\"<function {}>\"", name),
         Value::NativeFunction { name, .. } => format!("\"<native {}>\"", name),
+        Value::Class { name, .. } => format!("\"<class {}>\"", name),
+        Value::Instance { class_name, fields } => {
+            let parts: Vec<String> = fields
+                .iter()
+                .map(|(k, v)| format!("\"{}\": {}", k, value_to_json(v)))
+                .collect();
+            format!("{{\"__class__\": \"{}\", {}}}", class_name, parts.join(", "))
+        }
     }
 }
 
