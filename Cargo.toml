@@ -6,5 +6,6 @@ edition = "2021"
 [dependencies]
 kelpyshark-compiler = { path = "../compiler" }
 kelpyshark-interpreter = { path = "../interpreter" }
+ureq = { version = "2", features = ["json"] }
 
 [dev-dependencies]

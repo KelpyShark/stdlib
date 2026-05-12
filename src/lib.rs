@@ -1,13 +1,14 @@
 /// KelpyShark Standard Library
 ///
 /// Built-in modules that can be registered into the interpreter.
-/// Modules: math, strings, io, json, sys
+/// Modules: math, strings, io, json, sys, http
 
 pub mod math;
 pub mod strings;
 pub mod io;
 pub mod json;
 pub mod sys;
+pub mod http;
 
 use kelpyshark_interpreter::value::Value;
 
@@ -22,5 +23,6 @@ pub fn all_stdlib_functions() -> Vec<NativeFn> {
     fns.extend(io::functions());
     fns.extend(json::functions());
     fns.extend(sys::functions());
+    fns.extend(http::functions());
     fns
 }
